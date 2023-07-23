@@ -68,6 +68,7 @@ function displayMovies() {
 
 function displayMovieDetails(movie) {
   movieDetailsContainer.innerHTML = `
+  <h2>Movie Details:</h2>
     <h2>${movie.Title}</h2>
     <p><strong>Year:</strong> ${movie.Year}</p>
     <p><strong>Director:</strong> ${movie.Director}</p>

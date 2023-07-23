@@ -177,3 +177,6 @@ main {
   padding: 5px 10px;
   cursor: pointer;
 }
+.movie-details h2 {
+  text-align: center;
+}
