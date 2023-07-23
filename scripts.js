@@ -160,9 +160,8 @@ searchInput.addEventListener("keypress", function (event) {
     searchMovies();
   }
 });
-if (currentPage - 1 <= 0)
+if (currentPage - 1 > 0)
   prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
 
 nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
-
 searchMovies();
