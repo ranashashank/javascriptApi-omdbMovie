@@ -1,4 +1,3 @@
-// Replace 'YOUR_API_KEY' with your actual OMDB API key
 const apiKey = "7d639657";
 const baseUrl = "https://www.omdbapi.com/";
 
@@ -15,7 +14,6 @@ let currentPage = 1;
 let totalResults = 0;
 let movies = [];
 
-// Fetch movie data from the OMDB API
 async function getMovies(searchTerm, page) {
   const url = `${baseUrl}?apikey=${apiKey}&s=${searchTerm}&page=${page}`;
 
@@ -33,18 +31,16 @@ async function getMovies(searchTerm, page) {
   } catch (error) {
     console.error(error.message);
     alert(error.message);
-    return [];
+    movies = [];
   }
 }
-
-// Display the movie list on the page
 function displayMovies() {
   movieListContainer.innerHTML = "";
 
   movies.forEach((movie) => {
     const movieItem = document.createElement("div");
     movieItem.classList.add("movie-item");
-    movieItem.dataset.id = movie.imdbID; //setting movie id in data-id
+    movieItem.dataset.id = movie.imdbID;
 
     const moviePoster = document.createElement("img");
     moviePoster.classList.add("movie-poster");
@@ -60,7 +56,6 @@ function displayMovies() {
 
     movieListContainer.appendChild(movieItem);
 
-    // Add event listener to each movie item to display its details when clicked
     movieItem.addEventListener("click", async () => {
       const result = await fetch(
         `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`
@@ -71,7 +66,6 @@ function displayMovies() {
   });
 }
 
-// Display the movie details in the movie details section
 function displayMovieDetails(movie) {
   movieDetailsContainer.innerHTML = `
     <h2>${movie.Title}</h2>
@@ -94,26 +88,20 @@ function displayMovieDetails(movie) {
 
   movieDetailsContainer.style.display = "block";
 
-  ///LocalStorage save the comments and
-
-  // Retrieve existing user rating and comment from local storage
   const existingSubrating =
     parseFloat(localStorage.getItem(`subrating_${movie.imdbID}`)) || 0;
 
   const existingComment = localStorage.getItem(`comment_${movie.imdbID}`) || "";
 
-  // Display existing user rating, if available
   const ratingInput = document.getElementById(`rating-${movie.imdbID}`);
   const commentInput = document.getElementById(`comment-${movie.imdbID}`);
   ratingInput.value = existingSubrating;
   commentInput.value = existingComment;
 
-  // Add event listener to the submit button for subratings
   const submitRateBtn = document.getElementById(
     `submitRatingBtn-${movie.imdbID}`
   );
   submitRateBtn.addEventListener("click", function () {
-    // Save the new subrating to local storage
     const newSubrating = parseFloat(ratingInput.value);
     if (newSubrating >= 0 && newSubrating <= 5) {
       localStorage.setItem(`subrating_${movie.imdbID}`, newSubrating);
@@ -122,7 +110,7 @@ function displayMovieDetails(movie) {
       alert("Subrating must be a number between 0 and 5.");
     }
   });
-  // Add event listener to the submit button for user comments
+
   const submitCommentBtn = document.getElementById(
     `submitCommentBtn-${movie.imdbID}`
   );
@@ -133,7 +121,6 @@ function displayMovieDetails(movie) {
   });
 }
 
-// Fetch and display movies based on search query and page number
 async function searchMovies() {
   const searchTerm = searchInput.value;
   currentPage = 1;
@@ -148,7 +135,6 @@ async function searchMovies() {
   }
 }
 
-// Update pagination buttons and page numbers
 function updatePagination() {
   const totalPages = Math.ceil(totalResults / 10);
 
@@ -161,8 +147,6 @@ function updatePagination() {
 
   pageNumbers.innerHTML = pageNumbersHTML;
 }
-
-// Go to a specific page
 async function goToPage(page) {
   currentPage = page;
   movies = await getMovies(searchInput.value, currentPage);
@@ -170,7 +154,6 @@ async function goToPage(page) {
   updatePagination();
 }
 
-// Event listeners
 searchBtn.addEventListener("click", searchMovies);
 searchInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
@@ -182,5 +165,4 @@ if (currentPage - 1 <= 0)
 
 nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
 
-// Initial page load
 searchMovies();
