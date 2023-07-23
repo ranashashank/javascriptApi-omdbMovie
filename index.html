@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Api</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Movie Application</h1>
+      <div class="search-div">
+        <input type="text" id="search-input" placeholder="Search movies..." />
+        <button id="searchBtn">Search</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="movie-list" id="movieList"></div>
+      <div class="pagination">
+        <button id="prevBtn">Previous</button>
+
+        <div id="pageNumbers"></div>
+        <button id="nextBtn">Next</button>
+      </div>
+      <div class="movie-details" id="movieDetails">
+        <!-- Movie details will be displayed here upon selecting a movie -->
+      </div>
+    </main>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
