@@ -104,6 +104,7 @@ main {
 #pageNumbers {
   display: flex;
   width: 100%;
+  overflow: scroll;
 }
 
 .page_number {
