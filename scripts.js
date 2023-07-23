@@ -58,7 +58,7 @@ function displayMovies() {
 
     movieItem.addEventListener("click", async () => {
       const result = await fetch(
-        `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`
+        `${baseUrl}?i=${movie.imdbID}&apikey=${apiKey}`
       );
       const movieDetails = await result.json();
       displayMovieDetails(movieDetails);
