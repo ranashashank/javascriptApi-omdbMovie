@@ -123,15 +123,19 @@ main {
   border-color: #007bff;
 }
 .movie-details {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-  display: none;
+  border: 1px solid #ccc;
+  padding: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 5px;
 }
 
 .movie-details h2 {
-  margin-top: 0;
+  color: #007bff;
+  margin-bottom: 10px;
 }
 
 .movie-details p {
@@ -142,11 +146,34 @@ main {
   font-size: 24px;
   color: orangered;
 }
+.star-rating label {
+  display: block;
+  margin-bottom: 5px;
+}
+.star-rating input {
+  margin-bottom: 5px;
+  display: block;
+}
 .comments-edit {
   font-size: 24px;
   color: blueviolet;
 }
-
-.comments {
-  margin-top: 15px;
+.star-rating button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.comments-edit label,
+.comments-edit input {
+  display: block;
+  margin-bottom: 5px;
+}
+.comments-edit button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
